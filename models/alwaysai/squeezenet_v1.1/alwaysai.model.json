@@ -1,0 +1,30 @@
+{
+  "id": "alwaysai/squeezenet_v1.1",
+  "accuracy": "",
+  "description": "Requires 2.4x less computation than SqueezeNet v1.0 without diminishing accuracy. Classifies images based on the 1000 categories described in Large Scale Visual Recognition Challenge 2012.",
+  "inference_time": 0.05372,
+  "license": "BSD-2-Clause",
+  "mean_average_precision_top_1": 0.571,
+  "mean_average_precision_top_5": 0.802,
+  "public": true,
+  "website_url": "https://github.com/DeepScale/SqueezeNet",
+  "model_parameters": {
+    "framework_type": "caffe",
+    "config_file": "models/squeezenet_v1.1.prototxt",
+    "size": [
+      227,
+      227
+    ],
+    "model_file": "models/squeezenet_v1.1.caffemodel",
+    "label_file": "labels/synset_words.txt",
+    "scalefactor": 1,
+    "mean": [
+      0,
+      0,
+      0
+    ],
+    "crop": true,
+    "purpose": "Classification"
+  },
+  "version": 1
+}
