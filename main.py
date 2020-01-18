@@ -35,4 +35,14 @@ def localize_objects(path):
         for vertex in object_.bounding_poly.normalized_vertices:
             print(' - ({}, {})'.format(vertex.x, vertex.y))
 
+import cv2
+from time import sleep
+sleep(2)
+webcam = cv2.VideoCapture(0)
+check, frame = webcam.read()
+cv2.imshow("Capturing", frame)
+cv2.imwrite(filename='test.jpg', img=frame)
+webcam.release()
+print("Processing image...")
+
 localize_objects('test.jpg')
