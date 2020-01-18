@@ -1,1 +1,2 @@
 google-cloud-vision
+opencv_python-4.2.0-cp38-cp38-win_amd64.whl
