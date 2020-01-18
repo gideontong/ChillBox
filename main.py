@@ -3,11 +3,15 @@
 import io
 import os
 
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="environ.json"
+import cv2
+from time import sleep
+from time import time
 
 # Imports the Google Cloud client library
 from google.cloud import vision
 from google.cloud.vision import types
+
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="environ.json"
 
 # Instantiates a client
 client = vision.ImageAnnotatorClient()
@@ -35,14 +39,25 @@ def localize_objects(path):
         for vertex in object_.bounding_poly.normalized_vertices:
             print(' - ({}, {})'.format(vertex.x, vertex.y))
 
-import cv2
-from time import sleep
-sleep(2)
-webcam = cv2.VideoCapture(0)
-check, frame = webcam.read()
-cv2.imshow("Capturing", frame)
-cv2.imwrite(filename='test.jpg', img=frame)
-webcam.release()
-print("Processing image...")
+def capture_image():
+    webcam = cv2.VideoCapture(0)
+    start = time()
+    # key = cv2.waitKey(1)
+    while True:
+        check, frame = webcam.read()
+        # gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+        cv2.imshow("Capturing", frame)
+        key = cv2.waitKey(1)
+        elasped = time() - start
+        if elasped > 5:
+            break
+    cv2.imwrite(filename='test.jpg', img=frame)
+    webcam.release()
+    cv2.destroyAllWindows()
+    print("Processing image...")
 
-localize_objects('test.jpg')
+def main():
+    capture_image()
+    localize_objects('test.jpg')
+
+main()
