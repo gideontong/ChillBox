@@ -39,6 +39,8 @@ def localize_objects(path):
         for vertex in object_.bounding_poly.normalized_vertices:
             print(' - ({}, {})'.format(vertex.x, vertex.y))
 
+    return objects
+
 def capture_image():
     webcam = cv2.VideoCapture(0)
     start = time()
@@ -49,15 +51,18 @@ def capture_image():
         cv2.imshow("Capturing", frame)
         key = cv2.waitKey(1)
         elasped = time() - start
-        if elasped > 5:
+        if key == ord('q'):
             break
     cv2.imwrite(filename='test.jpg', img=frame)
     webcam.release()
     cv2.destroyAllWindows()
     print("Processing image...")
 
+def main2():
+    # webc
+
 def main():
     capture_image()
-    localize_objects('test.jpg')
+    # localize_objects('test.jpg')
 
 main()
