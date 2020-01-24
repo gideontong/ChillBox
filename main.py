@@ -1,5 +1,4 @@
-# hard hack
-
+# Import statements
 import io
 import os
 import sqlite3
